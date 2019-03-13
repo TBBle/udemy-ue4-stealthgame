@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FPSObjectiveActor.h"
+#include "FPSCharacter.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -37,5 +38,13 @@ void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor* OtherActor)
 	Super::NotifyActorBeginOverlap(OtherActor);
 
 	PlayEffects();
+
+	AFPSCharacter* OtherCharacter = Cast<AFPSCharacter>(OtherActor);
+	if (OtherCharacter)
+	{
+		OtherCharacter->bIsCarryingObjective = true;
+
+		Destroy();
+	}
 }
 
