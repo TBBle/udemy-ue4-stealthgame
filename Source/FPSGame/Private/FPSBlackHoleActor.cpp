@@ -66,7 +66,11 @@ void AFPSBlackHoleActor::Tick(float DeltaSeconds)
 	AttractorComponent->GetOverlappingComponents(overlappers);
 	for (auto overlapper : overlappers)
 	{
-		overlapper->AddRadialForce(forceSource, forceRadius, -AttactionForce, RIF_Linear);
+		// TODO: I suspect Projectiles don't work here as they use a ProjectileMover, and hence aren't using Physics.
+		if (overlapper->IsSimulatingPhysics())
+		{
+			overlapper->AddRadialForce(forceSource, forceRadius, -AttactionForce, RIF_Linear);
+		}
 	}
 }
 
