@@ -10,9 +10,6 @@ AFPSObjectiveActor::AFPSObjectiveActor() :
 	MeshComponent{CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"))},
 	SphereComponent{CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"))}
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
 	RootComponent = MeshComponent;
 	SphereComponent->SetupAttachment(MeshComponent);
 
@@ -33,13 +30,6 @@ void AFPSObjectiveActor::BeginPlay()
 void AFPSObjectiveActor::PlayEffects()
 {
 	UGameplayStatics::SpawnEmitterAtLocation(this, PickupFX, GetActorLocation());
-}
-
-// Called every frame
-void AFPSObjectiveActor::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
 void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor* OtherActor)
