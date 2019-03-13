@@ -69,3 +69,6 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Don't commit binaries, the UE4 Editor will get fooled and destroy your content.
+Binaries/*
