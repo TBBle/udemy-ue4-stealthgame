@@ -4,6 +4,10 @@
 # Visual Studio 2015 database file
 *.VC.db
 
+# Visual Studio Code
+*.code-workspace
+.vscode/
+
 # Compiled Object files
 *.slo
 *.lo
