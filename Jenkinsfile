@@ -11,7 +11,7 @@ pipeline {
 		stage('Build') {
 			parallel {
 				stage('Windows Build') {
-					agent { label 'windows&&docker' }
+					agent { label 'windows && docker' }
 					steps {
 						// https://jenkins.io/blog/2017/07/26/powershell-pipeline/
 						powershell(label:'Check Docker Version', script: 'docker version')
