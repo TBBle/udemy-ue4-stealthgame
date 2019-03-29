@@ -19,6 +19,7 @@ pipeline {
 					steps {
 						// https://jenkins.io/blog/2017/07/26/powershell-pipeline/
 						powershell(label:'Check Docker Version', script: 'docker version')
+						powershell(label:'Authenticate to ECR', script: 'Invoke-Expression -Command (Get-ECRLoginCommand -Region us-east-1).Command')
 						windowsContainer('703768941458.dkr.ecr.us-east-1.amazonaws.com/ue4-docker/ue4-full:4.21.2', '-m 8GB',
 						[
 							'ue4 uat BuildCookRun -noP4 -clientconfig=Shipping -serverconfig=Shipping -cook -allmaps -build -stage -prereqs -pak -archive -archivedirectory="%cd%\\dist"',
