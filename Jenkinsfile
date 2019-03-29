@@ -29,7 +29,7 @@ pipeline {
 					{
 						success { archiveArtifacts artifacts: 'StealthGame.Win64.7z' }
 						cleanup { cleanWS() }
-
+					}
 				}
 			}
 		}
