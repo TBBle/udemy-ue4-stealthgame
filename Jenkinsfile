@@ -20,9 +20,15 @@ pipeline {
 	stages {
 		stage('Build') {
 			parallel {
-				stage('Windows Build') {
+				stage('Allocate node') {
 					agent { label 'windows && docker' }
+					options { skipDefaultCheckout true }
 					stages {
+						stage('Checkout') {
+							steps {
+								checkout scm
+							}
+						}
 						stage('Prepare Docker Image') {
 							steps {
 								// https://jenkins.io/blog/2017/07/26/powershell-pipeline/
