@@ -31,11 +31,14 @@ pipeline {
 								powershell(label:'Pull ue4-full', script: "docker pull ${env.DOCKER_UE4FULL}")
 							}
 						}
-						stage('Build') {
+						stage('Package - Shipping') {
 							steps {
 								windowsContainer("${env.DOCKER_UE4FULL}", '-m 8GB',
 								[
-									'ue4 uat BuildCookRun -noP4 -clientconfig=Shipping -serverconfig=Shipping -cook -allmaps -build -stage -prereqs -pak -archive -archivedirectory="%cd%\\dist"',
+									'dir *.uproject',
+									'ue4 root',
+									'ue4 version',
+									'ue4 package Shipping',
 									'7z a StealthGame.Win64.7z .\\dist'
 								])
 							}
