@@ -38,6 +38,7 @@ pipeline {
 								[
 									// https://adamrehn.com/docs/ue4cli/descriptor-commands/package
 									'ue4 package Shipping',
+									'choco install -y 7zip',
 									'7z a StealthGame.Win64.7z .\\dist'
 								])
 							}
