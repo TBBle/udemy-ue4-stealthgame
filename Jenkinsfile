@@ -16,6 +16,7 @@ pipeline {
 		UE_VERSION='4.21.2'
 		DOCKER_UE4FULL="703768941458.dkr.ecr.${env.AWS_REGION}.amazonaws.com/ue4-docker/ue4-full:${env.UE_VERSION}"
 	}
+	options { timestamps }
 	stages {
 		stage('Build') {
 			parallel {
