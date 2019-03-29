@@ -35,9 +35,7 @@ pipeline {
 							steps {
 								windowsContainer("${env.DOCKER_UE4FULL}", '-m 8GB',
 								[
-									'dir *.uproject',
-									'ue4 root',
-									'ue4 version',
+									// https://adamrehn.com/docs/ue4cli/descriptor-commands/package
 									'ue4 package Shipping',
 									'7z a StealthGame.Win64.7z .\\dist'
 								])
